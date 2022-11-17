@@ -1,4 +1,9 @@
+const rgbColor = document.getElementById('rgb-color');
 // Criar cores aleatorias rgb.
+
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
 
 function randomColor() {
   const randomNumber1 = Math.floor(Math.random() * 256);
@@ -9,7 +14,6 @@ function randomColor() {
 
 const balls = document.getElementById('ball-container').children;
 const answerText = document.getElementById('answer');
-const rgbColor = document.getElementById('rgb-color');
 
 // Mostrar se a cor escolhida está certa.
 
@@ -24,9 +28,9 @@ function showAnswer(event) {
 }
 
 // Adicionar cores aleatoria as bolas e evento quando clicar nas bolas.
-
 for (let i = 0; i < balls.length; i += 1) {
-  balls[0].style.backgroundColor = 'rgb(168, 34, 1)';
   balls[i].style.backgroundColor = randomColor();
   balls[i].addEventListener('click', showAnswer);
+  console.log(balls[i].style.backgroundColor);
+  rgbColor.innerText = balls[randomNumber(0, balls.length - 1)].style.backgroundColor;
 }
