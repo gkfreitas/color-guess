@@ -28,9 +28,19 @@ function showAnswer(event) {
 }
 
 // Adicionar cores aleatoria as bolas e evento quando clicar nas bolas.
-for (let i = 0; i < balls.length; i += 1) {
-  balls[i].style.backgroundColor = randomColor();
-  balls[i].addEventListener('click', showAnswer);
-  console.log(balls[i].style.backgroundColor);
-  rgbColor.innerText = balls[randomNumber(0, balls.length - 1)].style.backgroundColor;
+
+function generateColor() {
+  for (let i = 0; i < balls.length; i += 1) {
+    balls[i].style.backgroundColor = randomColor();
+    balls[i].addEventListener('click', showAnswer);
+    rgbColor.innerText = balls[randomNumber(0, balls.length - 1)].style.backgroundColor;
+  }
+  answerText.innerText = 'Escolha uma cor';
 }
+generateColor();
+
+// Botão para resetar game
+
+const buttonReset = document.getElementById('reset-game');
+
+buttonReset.addEventListener('click', generateColor);
