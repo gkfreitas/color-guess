@@ -16,6 +16,9 @@ const balls = document.getElementById('ball-container').children;
 const answerText = document.getElementById('answer');
 
 // Mostrar se a cor escolhida está certa.
+const scorePoints = document.getElementById('score');
+let score = 0;
+scorePoints.innerHTML = score;
 
 function showAnswer(event) {
   const eventTarget = event.target;
@@ -24,6 +27,10 @@ function showAnswer(event) {
     answerText.innerText = 'Acertou!';
   } else {
     answerText.innerText = 'Errou! Tente novamente!';
+  }
+  if (answerText.innerText === 'Acertou!') {
+    score += 3;
+    scorePoints.innerText = score;
   }
 }
 
